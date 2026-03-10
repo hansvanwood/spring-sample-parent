@@ -1,7 +1,7 @@
 package com.example;
 
 import com.example.config.AppConfig;
-import com.example.service.MovieService;
+import com.example.controller.MovieController;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App03 {
@@ -18,10 +18,10 @@ public class App03 {
         }
 
         // 2. 从容器中获取 Bean（不需要 new！）
-        MovieService movieService = context.getBean(MovieService.class);
+        MovieController movieController = context.getBean(MovieController.class);
 
-        // 3.调用 movieService
-        movieService.print();
+        // 3.调用 movieController
+        movieController.print();
 
 
         // 4. 关闭容器（触发 @PreDestroy 回调）

@@ -33,7 +33,7 @@ public class MovieService {
      */
     public void print() {
         long movieCount = movieDao.countAll();
-        System.out.println("统计数据已缓存: 电影数量=" + movieCount);
+        System.out.println("查询到电影数量=" + movieCount);
         System.out.println("读取配置文件=" + customItem);
     }
 }
