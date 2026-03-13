@@ -2,6 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>4.0.3</version>
+    </parent>
+
     <groupId>com.example</groupId>
     <artifactId>spring-sample-parent</artifactId>
     <version>1.0.0</version>
@@ -16,6 +22,7 @@
         <module>spring-03-bean-definition</module>
         <module>spring-04-di</module>
         <module>spring-05-bean-lifecycle</module>
+        <module>spring-06-aop</module>
         <module>spring-10-practise</module>
     </modules>
 
