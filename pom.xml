@@ -2,12 +2,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.3</version>
-    </parent>
-
     <groupId>com.example</groupId>
     <artifactId>spring-sample-parent</artifactId>
     <version>1.0.0</version>
@@ -23,9 +17,10 @@
         <module>spring-04-di</module>
         <module>spring-05-bean-lifecycle</module>
         <module>spring-06-aop</module>
+        <module>spring-07-experiment-t1</module>
+        <module>spring-08-experiment-t2</module>
         <module>spring-10-practise</module>
     </modules>
-
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,6 +42,16 @@
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>6.0.3</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>7.0.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.9.25.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

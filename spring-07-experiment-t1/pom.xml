@@ -7,30 +7,22 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>spring-06-aop</artifactId>
+    <artifactId>spring-07-experiment-t1</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>spring-06-aop</name>
-    <description>Spring框架知识点示例 - AOP</description>
+    <name>spring-07-experiment-t1</name>
+    <description>Spring框架知识点示例 - Spring框架章节实验 - 子任务1</description>
 
     <dependencies>
-        <!-- Spring Context（IoC / AOP 核心） -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
-
-        <!-- Spring AOP -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-        </dependency>
-
-        <!-- AspectJ Weaver（运行时织入） -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

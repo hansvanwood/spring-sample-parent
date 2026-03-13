@@ -4,14 +4,11 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class MovieLogAspect {
-    private static final Logger log = LoggerFactory.getLogger(MovieLogAspect.class);
 
     /**
      * 公共切入点：拦截 MovieController 中所有 public 方法
@@ -20,27 +17,32 @@ public class MovieLogAspect {
     public void movieControllerMethods() {
     }
 
-    // 这个类本身就是一个 Aspect（切面）
+    /**
+     * @Around 示例：接口耗时监控（环绕通知最典型用法）
+     * ProceedingJoinPoint 是 JoinPoint 的子接口，提供 proceed() 方法
+     */
     @Around("movieControllerMethods()")
     public Object monitorPerformance(ProceedingJoinPoint pjp) throws Throwable {
         String methodName = pjp.getSignature().getName();
         long startTime = System.currentTimeMillis();
 
-        log.info("[Around - Before] 方法 [{}] 即将执行", methodName);
+        System.out.println("[Around - Before] 方法 [" + methodName + "] 即将执行");
 
         Object result;
         try {
             // 调用目标方法（不调用此行则目标方法不会执行）
             result = pjp.proceed();
-            log.info("[Around - AfterReturning] 方法 [{}] 正常返回", methodName);
+            System.out.println("[Around - AfterReturning] 方法 [" + methodName + "] 正常返回");
         } catch (Throwable ex) {
-            log.error("[Around - AfterThrowing] 方法 [{}] 抛出异常：{}", methodName, ex.getMessage());
+            System.err.println("[Around - AfterThrowing] 方法 [" + methodName + "] 抛出异常：" + ex.getMessage());
             throw ex; // 必须重新抛出，否则异常被吞掉
         } finally {
             long elapsed = System.currentTimeMillis() - startTime;
-            log.info("[Around - After] 方法 [{}] 执行耗时：{} ms", methodName, elapsed);
+            System.out.println("[Around - After] 方法 [" + methodName + "] 执行耗时：" + elapsed + " ms");
         }
 
         return result;
     }
+
+
 }
