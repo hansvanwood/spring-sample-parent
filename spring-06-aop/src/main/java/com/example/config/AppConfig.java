@@ -15,7 +15,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  *                 将标注了 @Component、@Service、@Repository 等注解的类
  *                 自动注册为 Bean。
  *
- * @EnableAspectJAutoProxy  开启 AspectJ 自动代理，子任务三的 AOP 功能依赖此注解。
+ * @EnableAspectJAutoProxy  开启 AspectJ 自动代理，AOP 功能依赖此注解。
  *                          proxyTargetClass = true 表示使用 CGLIB 子类代理（默认）。
  */
 @Configuration

@@ -32,7 +32,7 @@ class AopTest {
     // ─────────────────────────────
 
     @Test
-    @DisplayName("3-1 正常调用 getAllMovies()，观察 @Before 与 @Around 输出")
+    @DisplayName("2-1 正常调用 getAllMovies()，观察 @Before 与 @Around 输出")
     void testNormalExecution() {
         System.out.println("\n========== 测试：正常方法调用 ==========");
         var movies = movieService.getAllMovies();
@@ -56,7 +56,7 @@ class AopTest {
     // ─────────────────────────────
 
     @Test
-    @DisplayName("3-2 查询不存在 ID，触发 @AfterThrowing 异常通知")
+    @DisplayName("2-2 查询不存在 ID，触发 @AfterThrowing 异常通知")
     void testExceptionAdvice() {
         System.out.println("\n========== 测试：异常方法调用 ==========");
 
@@ -81,7 +81,7 @@ class AopTest {
     // ─────────────────────────────
 
     @Test
-    @DisplayName("3-3 调用 addMovie()，验证环绕通知记录入参与返回值")
+    @DisplayName("2-3 调用 addMovie()，验证环绕通知记录入参与返回值")
     void testAroundWithArgs() {
         System.out.println("\n========== 测试：带参数的方法调用 ==========");
         Movie newMovie = new Movie(100L, "2001太空漫游", "斯坦利·库布里克", 1968);
