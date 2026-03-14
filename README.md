@@ -18,6 +18,9 @@ spring-sample-parent/
 ├── spring-03-bean-definition/ # Bean 定义与注册
 ├── spring-04-di/              # 依赖注入（Dependency Injection）
 ├── spring-05-bean-lifecycle/  # Bean 的生命周期
+├── spring-06-aop/             # 面向切面编程（AOP）
+├── spring-07-experiment-t1/   # 实验任务 1 - IoC 综合练习
+├── spring-08-experiment-t2/   # 实验任务 2 - AOP 综合练习
 └── spring-10-practise/        # 综合实践（个人练习使用）
 ```
 
@@ -90,7 +93,7 @@ spring-sample-parent/
 - `MovieController2`: 控制器（多种注入方式）
 - `MovieService`: 服务层
 
-### 5. spring-05-bean-lifecycle- Bean 的生命周期
+### 5. spring-05-bean-lifecycle - Bean 的生命周期
 
 **目标**: 理解 Spring Bean 的完整生命周期
 
@@ -106,7 +109,65 @@ spring-sample-parent/
 - `LifecycleBean`: 生命周期演示 Bean
 - `MovieController`: 控制器示例
 
-### 6. spring-10-practise - 综合实践
+### 6. spring-06-aop - 面向切面编程
+
+**目标**: 掌握 Spring AOP 的核心概念和使用方法
+
+**内容**:
+- AOP 基本概念（切面、切入点、通知、连接点）
+- 使用 AspectJ 注解开发
+- `@Aspect`、`@Before`、`@After`、`@Around` 等注解
+- 切入点表达式语法
+- AOP 在实际开发中的应用场景（日志记录、事务管理、权限控制等）
+
+**核心类**:
+- `App06`: 主启动类
+- `MovieLogAspect`: 切面类（日志记录示例）
+- `MovieController`: 控制器（被代理对象）
+- `AppConfig`: 配置类（启用 AOP）
+
+### 7. spring-07-experiment-t1 - 实验任务 1: IoC 综合练习
+
+**目标**: 综合运用 Spring IoC 相关知识完成实践任务
+
+**内容**:
+- 完整的分层架构设计（Controller-Service-Dao）
+- Bean 的定义与管理
+- 依赖注入实战
+- 单元测试编写
+
+**核心类**:
+- `App07`: 主启动类
+- `MovieController`: 控制器层
+- `MovieService`: 服务层
+- `MovieDao`: 数据访问层
+- `Movie`: 实体类
+- `AppConfig`: 配置类
+
+**测试**:
+- `IoCTest`: IoC 容器集成测试
+
+### 8. spring-08-experiment-t2 - 实验任务 2: AOP 综合练习
+
+**目标**: 运用 Spring AOP 技术解决实际问题
+
+**内容**:
+- AOP 切面的设计与实现
+- 自定义注解与 AOP 结合
+- 环绕通知的实际应用
+- AOP 在性能监控、日志增强等场景的应用
+
+**核心类**:
+- `MovieController`: 控制器层
+- `MovieService`: 服务层
+- `MovieDao`: 数据访问层
+- `Movie`: 实体类
+- 切面类（性能监控、日志记录等）
+
+**测试**:
+- `AopTest`: AOP 功能集成测试
+
+### 9. spring-10-practise - 综合实践
 
 **目标**: 综合运用所学的 Spring 知识点
 
@@ -114,6 +175,10 @@ spring-sample-parent/
 - 完整的 Spring 应用示例
 - 多层架构设计
 - 最佳实践演示
+- 自由发挥和创新实践
+
+**核心类**:
+- `App`: 主启动类
 
 ## 🚀 快速开始
 
@@ -149,6 +214,18 @@ mvn -pl spring-04-di exec:java -Dexec.mainClass="com.example.App04"
 
 # 运行 Bean 生命周期示例
 mvn -pl spring-05-bean-lifecycle exec:java -Dexec.mainClass="com.example.App05"
+
+# 运行 AOP 示例
+mvn -pl spring-06-aop exec:java -Dexec.mainClass="com.example.App06"
+
+# 运行实验任务 1
+mvn -pl spring-07-experiment-t1 exec:java -Dexec.mainClass="com.example.App07"
+
+# 运行实验任务 1 的测试
+mvn -pl spring-07-experiment-t1 test
+
+# 运行实验任务 2 的测试
+mvn -pl spring-08-experiment-t2 test
 ```
 
 或者在 IDE 中直接运行各个模块的 `AppXX` 主类。
@@ -162,7 +239,10 @@ mvn -pl spring-05-bean-lifecycle exec:java -Dexec.mainClass="com.example.App05"
 3. **spring-03-bean-definition**: 学习如何定义和注册 Bean
 4. **spring-04-di**: 掌握依赖注入的各种方式
 5. **spring-05-bean-lifecycle**: 深入理解 Bean 的生命周期
-6. **spring-10-practise**: 综合运用所有知识点
+6. **spring-06-aop**: 学习面向切面编程思想
+7. **spring-07-experiment-t1**: 完成 IoC 综合练习
+8. **spring-08-experiment-t2**: 完成 AOP 综合练习
+9. **spring-10-practise**: 综合运用所有知识点进行自由实践
 
 ## 📝 核心概念
 
@@ -191,14 +271,20 @@ Spring 容器自动为 Bean 注入所需的依赖对象。
 - `@Qualifier`: 指定具体注入的 Bean 名称
 - `@PostConstruct`: 初始化回调
 - `@PreDestroy`: 销毁回调
+- `@Aspect`: 声明切面
+- `@Before`: 前置通知
+- `@After`: 后置通知
+- `@Around`: 环绕通知
+- `@Pointcut`: 切入点定义
 
 ## 🛠️ 技术栈
 
-- **Spring Framework 7.0.5**: 核心框架
+- **Spring Framework 7.0.5**: 核心框架（包含 Core、Context、Beans、AOP、Aspects 等模块）
 - **Jakarta Annotations 3.0.0**: 注解支持（Spring 6+ 使用 Jakarta 命名空间）
-- **Lombok 1.18.42**: 简化代码（`@RequiredArgsConstructor` 等）
+- **Lombok 1.18.42**: 简化代码（`@RequiredArgsConstructor`、`@Slf4j` 等）
 - **SLF4J 2.0.12 + Logback 1.5.0**: 日志框架
 - **JUnit 6.0.3**: 单元测试框架
+- **AspectJ Weaver**: AOP 织入工具
 
 ## 📋 模块依赖关系
 
@@ -225,6 +311,21 @@ A: Spring 官方推荐使用**构造器注入**，因为：
 - 便于测试
 - 避免循环依赖
 - 强制依赖显式声明
+
+### Q: Spring AOP 和 AspectJ 有什么区别？
+
+A: 
+- **Spring AOP**: 基于动态代理，运行时织入，适用于 Spring Bean 的方法调用
+- **AspectJ**: 功能更强大，编译时或加载时织入，可以拦截任意对象的方法调用、字段访问等
+- 项目中通常结合使用，Spring AOP 处理简单的业务场景，复杂场景使用 AspectJ
+
+### Q: 如何调试 AOP 相关的问题？
+
+A:
+- 启用 Spring AOP 的调试日志：在 `application.properties` 中设置 `logging.level.org.springframework.aop=DEBUG`
+- 检查切入点表达式是否正确匹配到目标方法
+- 确认目标类是否被 Spring 容器管理
+- 注意 AOP 只对 Spring Bean 有效，对内部方法调用无效
 
 ## 📖 参考资源
 
