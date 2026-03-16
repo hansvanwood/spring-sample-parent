@@ -4,7 +4,6 @@ package com.example.service;
 import com.example.dao.MovieDao;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,10 +22,6 @@ public class MovieService {
     // 声明为 final，Spring 容器启动时自动找到 MovieDao 类型的 Bean 注入进来
     private final MovieDao movieDao;
 
-    // @Value 注入配置文件中的值（后面章节详细讲解）
-    @Value("${spring.custom.item:没有读到配置文件的缺省值}")
-    private String customItem;
-
     /**
      * 获取电影统计数据（带缓存）
      * 双重检查锁（Double-Checked Locking）保证线程安全
@@ -34,6 +29,5 @@ public class MovieService {
     public void print() {
         long movieCount = movieDao.countAll();
         System.out.println("查询到电影数量=" + movieCount);
-        System.out.println("读取配置文件=" + customItem);
     }
 }
